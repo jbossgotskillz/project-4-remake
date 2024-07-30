@@ -35,7 +35,6 @@ Improvements: spend more time writing Python code, add login authentication, inc
 <body>
 
   <div>
-    <a class="nav-link" href="./index.html">Click here to go to Index</a>
-  </div>
-  
+    <a class="nav-link" href="{% url 'index' %}">Click here to go to Index</a>  
+  </div>  
 </body>
