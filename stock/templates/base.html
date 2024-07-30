@@ -1,0 +1,50 @@
+{% load static %}
+
+<DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <title>General Banks</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+        
+        {% load django_bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+
+        <link rel="stylesheet" href="{% static './css/template.css' %}">
+
+    </head>
+
+    <body>
+
+        {% comment %} navbar {% endcomment %}
+
+        {% include 'navbar.html' %}
+
+        {% comment %} main body {% endcomment %}
+
+        {% block content %}
+
+        {% endblock %}
+
+        {% comment %} footer {% endcomment %}
+
+        {% include 'footer.html' %}
+
+        <style>
+            body {
+               background-color:  skyblue;
+            }
+        </style>
+
+    </body>
+
+</html>

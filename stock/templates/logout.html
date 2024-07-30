@@ -1,0 +1,79 @@
+{% load static %}
+
+<DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <title>General Banks</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+
+        {% load django_bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+
+        <link rel="icon" type="image/x-icon" href="{% static './images/emblem.jpg' %}">
+        
+        <link rel="stylesheet" href="{% static './css/template.css' %}">
+
+    </head>
+
+    <body class="logout-background">
+
+        {% comment %} navbar {% endcomment %}
+
+        {% include 'navbar.html' %}
+        
+        {% comment %} url paths {% endcomment %}
+
+        <div class="container">
+            <ul>
+                <li><a class="nav-link" href="{% url 'home' %}">Return to base (Home)</a></li>
+            </ul>
+        </div>
+
+        {% comment %} audio controls {% endcomment %}
+
+        <div class="container text-center">
+            <audio controls autoplay loop>
+                <source src="{% static './audio/emotional-historical-powerful-hopeful-heroic-military-music-21513.mp3' %}" type="audio/mpeg">
+            </audio>
+        </div>
+
+        {% comment %} header {% endcomment %}
+
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-5">
+                    <img src="{% static './images/army_squad7.jpg' %}" height="180" alt="logout squad">
+                </div>
+                <div class="col-2 my-auto">
+                    <h1 class="header">LOGOUT</h1>
+                </div>
+                <div class="col-5">
+                    <img src="{% static './images/army_squad7.jpg' %}" height="180" alt="logout squad">
+                </div>
+            </div>
+        </div>
+
+        {% comment %} logout notice {% endcomment %}
+
+        <div class="container">
+            <p>Congratulations on completing your mission, soldier.  You did one heck of a job.  Go back to the command 
+                center whenever you're ready to get back into the fight.</p>
+        </div>
+
+        {% comment %} footer {% endcomment %}
+                
+        {% include 'footer.html' %}
+
+    </body>
+
+</html>

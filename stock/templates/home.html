@@ -1,0 +1,97 @@
+{% load static %}
+
+<DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <title>General Banks</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+
+        {% load django_bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        
+        <link rel="icon" type="image/x-icon" href="{% static './images/emblem.jpg' %}">
+
+        <link rel="stylesheet" href="{% static './css/template.css' %}">
+
+    </head>
+
+    <body class="home-background">
+
+        {% comment %} navbar {% endcomment %}
+
+        {% include 'navbar.html' %}
+ 
+        {% comment %} url paths {% endcomment %}
+
+        <div class="container">
+            <ul>
+                <li><a class="nav-link" href="{% url 'index' %}">Finish your service (Index)</a></li>
+                <li><a class="nav-link" href="{% url 'login' %}">Report for duty (Login)</a></li>
+                <li><a class="nav-link" aria-disabled="true">Talk to command (Contact)</a></li>
+            </ul>
+        </div>       
+        
+        {% comment %} audio controls {% endcomment %}
+
+        <div class="container text-center">
+            <audio controls autoplay loop>
+                <source src="{% static './audio/army-157045.mp3' %}" type="audio/mpeg">
+            </audio>
+        </div>
+
+        {% comment %} header {% endcomment %}
+
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-4">
+                    <img src="{% static './images/army_squad5.jpg' %}" height="180" alt="home squad">
+                </div>
+                <div class="col-4 my-auto">
+                    <h1 class="header">HOME</h1>
+                </div>
+                <div class="col-4">
+                    <img src="{% static './images/army_squad5.jpg' %}" height="180" alt="home squad">
+                </div>
+            </div>
+        </div>
+
+        {% comment %} body text {% endcomment %}
+
+        <div class="container">
+            <h3 class="header">Orientation</h3>
+            <p>Atten-chun!  Welcome to the frontline, soldier.  We at the UBF (or the "United Banking Federation") are happy to 
+                recruit you.
+            </p>
+
+            <h3 class="header">Purpose</h3>
+            <p>General Banks is an app designed to help soldiers like you keep their finances in order.  You can track your 
+                stocks, make investments, and send transactions, all from the comfort of whatever base you're stationed at.  
+                As all properly trained soldiers know, preparation and discipline are key to winning any battle.
+            </p>
+
+            <h3 class="header">Mission Debriefing</h3>
+            <p>One of the United Banking Federation's five military branches, the UBF army understands that saving money is 
+                a war that you must fight for the rest of your life, so the men and women who proudly serve the UBF are willing 
+                to make the ultimate sacrifice to protect our country from bankruptcy, money theft, loss of stock, and all 
+                other financial threats.  General Banks will lead you and your fellow comrades to victory.  We salute you, 
+                soldier.
+            </p>
+        </div>
+        
+        {% comment %} footer {% endcomment %}
+
+        {% include 'footer.html' %}
+    
+    </body>
+
+</html>

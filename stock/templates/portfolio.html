@@ -1,0 +1,310 @@
+{% load static %}
+
+<DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <title>General Banks</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+        
+<!--        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+        <py-env>
+        - numpy
+        - matplotlib
+        </py-env>-->
+
+        {% load django_bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+
+        <link rel="stylesheet" href="{% static './css/template.css' %}">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    </head>
+
+    <body class="portfolio-background">
+      
+        {% comment %} navbar {% endcomment %}
+
+        {% include 'navbar.html' %}
+
+        <!--<header>{{ page|title }}</header>  (capitalizes the first word of every letter)-->
+
+
+<!--        {% block logout %}
+
+        {% if request.user.is_authenticated %}
+            <h4>
+                Welcome, 
+                {% if request.user.first_name %} 
+                    {{ request.user.first_name }}
+                {% else %}
+                    {{ request.user.username}}
+                {% endif %}!
+
+                <a href="{% url 'logout' %}">Logout</a>
+
+            </h4>
+        {% else %}
+            <h4>
+                Welcome, mysterious person! 
+                Would you like to <a href="{% url 'login' %}">Login</a>?
+            </h4>
+
+        {% endif %}
+
+        {% endblock %}-->
+
+        {% comment %} url paths {% endcomment %}
+
+        <div class="container">
+            <ul>
+                <li><a class="nav-link" href="{% url 'logout' %}">Exit the battlefield (Logout)</a></li>
+                <li><a class="nav-link" aria-disabled="true">Talk to command (Contact)</a></li>
+                <li><a class="nav-link" aria-disabled="true">Change your combat gear (Settings)</a></li>
+                <p>My bank account is {{amount}}!<p>
+            </ul>
+        </div>
+
+        {% comment %} audio controls {% endcomment %}
+
+       <div class="container text-center">
+            <audio controls autoplay loop>
+                <source src="{% static './audio/military-power-strong-action-trailer-for-war-film-intro-opener-212027.mp3' %}" type="audio/mpeg">
+            </audio>
+        </div>
+
+        {% comment %} header{% endcomment %}
+
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-4">
+                    <img src="{% static './images/army_squad6.jpg' %}" height="180" alt="portfolio squad">
+                </div>
+                <div class="col-4 my-auto">
+                    <h1 class="header">PORTFOLIO</h1>
+                </div>
+                <div class="col-4">
+                    <img src="{% static './images/army_squad6.jpg' %}" height="180" alt="portfolio squad">
+                </div>
+            </div>        
+        </div>
+
+        <!--
+        <div id="plot" class="container text-center"></div>
+
+        <py-script output="plot">
+
+        from matplotlib import pyplot as plt
+        import matplotlib.dates as mdates
+        import matplotlib.cbook as cbook
+
+        import numpy as np
+
+        year = np.array([2019, 2020, 2021, 2022, 2023, 2024, 2025])     #year = x-points
+        company1 = np.array([])                                         #company = y-points
+        company2 = np.array([])
+        company3 = np.array([])
+        company4 = np.array([])
+        company5 = np.array([])
+        yticks = [500, 1000, 1500, 2000, 2500, 300, 3500, 4000, 4500, 5000]
+
+        plt.title("Proud 2 Serve Stock Exchange")
+        plt.xlabel("Year")
+        plt.ylabel("Stock Value")
+        plt.legend(["Battlefield Mapstyles", "Explosives-R-Us", "Guns & Ammo", "Oscar Mike Combat Wear", "Transports: Land, Sea, Air"])
+
+        plt.subplot(6, 8, 1)
+
+        plt.plot(year, company1, color="purple", marker="*", markersize="10", linestyle="-")
+        plt.plot(year, company2, color="yellow", marker="*", markersize="10", linestyle="-")
+        plt.plot(year, company3, color="red", marker="*", markersize="10", linestyle="-")
+        plt.plot(year, company4, color="green", marker="*", markersize="10", linestyle="-")
+        plt.plot(year, company5, color="blue", marker="*", markersize="10", linestyle="-")
+
+        plt.axis((2019, 2025, 0, 5000))
+
+        plt.grid()
+
+        plt.tight_layout()
+
+        pyscript.write('plot', fig)
+
+        </py-script>
+
+
+        <div class="container text-center">        
+            <py-script src="{% static './py/practice.py' %}"></py-script>
+        </div>-->
+
+        {% comment %} where the models are rendered {% endcomment %}
+
+        <div class="container text-center">
+            <h3 class="header">Objective Guide</h3>
+            <p>Below are your mission objectives, soldier.  You may choose to do them any way you wish, as long as you 
+                complete the mission.  Good luck out there on the battlefield.</p>
+            <canvas id="stock" style="width:100%; max-width:600px; background-color:white; margin:auto"></canvas>        
+            <table class="query-table" style="width:80%; margin-top:24px">
+                <tr>
+                    <th>ID</th>
+                    <th>Company</th>
+                    <th>Symbol</th>
+                    <th>Quantity</th>
+                    <th>Value</th>
+                    <th>Current Balance</th>
+                </tr>
+                {% for s in stock %}
+                    <tr>
+                        <td>{{s.id}}</td>
+                        <td>{{s.company}}</td>
+                        <td>{{s.symbol}}</td>
+                        <td>{{s.quantity}}</td>
+                        <td>{{s.value}}</td>
+                        <td>{{s.balance}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <p><em>{{update}}</em></p>
+<!--            <div class="row">
+                <div class="col-3 offset-3">
+                    <div class="nav-item">
+                        <a class="btn btn-warning login-btn" href="{% url 'buy' %}" role="button">Buy</a>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="nav-item">
+                        <a class="btn btn-warning login-btn" href="{% url 'sell' %}" role="button">Sell</a>
+                    </div>
+                </div>
+            </div>-->
+
+            <div class="container my-2" style="width:80%">
+                <h3 class="header" style="margin-top:9px">Battlefield Mapstyles</h3>
+                <img src="{% static './images/flag_24dp_FFD700_FILL0_wght400_GRAD0_opsz24.png' %}" style="background-color:rgb(43, 35, 35)">
+                <div class="row">
+                    <div class="col-6 offset-3" style="margin-top:28px">
+                        <h1 class="battlefield-stock-counter-display">(..)</h1>
+                        <h1 class="battlefield-quantity-counter">(..)</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center">
+                        <input type="button" class="btn btn-warning" value="- [Buy]" id="battlefield-stock-counter-buy">
+                        <input type="button" class="btn btn-warning" value="+ [Sell]" id="battlefield-stock-counter-sell">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container my-2" style="width:80%">
+                <h3 class="header" style="margin-top:9px">Explosives-R-Us</h3>
+                <img src="{% static './images/bomb_24dp_FFD700_FILL0_wght400_GRAD0_opsz24.png' %}" style="background-color:rgb(43, 35, 35)">
+                <div class="row" style="margin-top:14px">
+                    <div class="col-6 offset-3" style="margin-top:28px">
+                        <h1 class="explosives-stock-counter-display">(..)</h1>
+                        <h1 class="explosives-quantity-counter">(..)</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center">
+                        <input type="button" class="btn btn-warning" value="- [Buy]" id="explosives-stock-counter-buy">
+                        <input type="button" class="btn btn-warning" value="+ [Sell]" id="explosives-stock-counter-sell">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container my-2" style="width:80%">
+                <h3 class="header" style="margin-top:9px">Guns & Ammo</h3>
+                <img src="{% static './images/add_box_24dp_FFD700_FILL0_wght400_GRAD0_opsz24.png' %}" style="background-color:rgb(43, 35, 35)">
+                <div class="row">
+                    <div class="col-6 offset-3" style="margin-top:28px">
+                        <h1 class="guns-stock-counter-display">(..)</h1>
+                        <h1 class="guns-quantity-counter">(..)</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center">
+                        <input type="button" class="btn btn-warning" value="- [Buy]" id="guns-stock-counter-buy">
+                        <input type="button" class="btn btn-warning" value="+ [Sell]" id="guns-stock-counter-sell">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container my-2" style="width:80%">
+                <h3 class="header" style="margin-top:9px">Oscar Mike Combat Wear</h3>
+                <img src="{% static './images/apparel_24dp_FFD700_FILL0_wght400_GRAD0_opsz24.png' %}" style="background-color:rgb(43, 35, 35)">
+                <div class="row">
+                    <div class="col-6 offset-3" style="margin-top:28px">
+                        <h1 class="oscar-stock-counter-display">(..)</h1>
+                        <h1 class="oscar-quantity-counter">(..)</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center">
+                        <input type="button" class="btn btn-warning" value="- [Buy]" id="oscar-stock-counter-buy">
+                        <input type="button" class="btn btn-warning" value="+ [Sell]" id="oscar-stock-counter-sell">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container my-2" style="width:80%">
+                <h3 class="header" style="margin-top:9px">Transports: Land, Sea, Air</h3>
+                <img src="{% static './images/departure_board_24dp_FFD700_FILL0_wght400_GRAD0_opsz24.png' %}" style="background-color:rgb(43, 35, 35)">
+                <div class="row">
+                    <div class="col-6 offset-3" style="margin-top:28px">
+                        <h1 class="transports-stock-counter-display">(..)</h1>
+                        <h1 class="transports-quantity-counter">(..)</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center">
+                        <input type="button" class="btn btn-warning" value="- [Buy]" id="transports-stock-counter-buy">
+                        <input type="button" class="btn btn-warning" value="+ [Sell]" id="transports-stock-counter-sell">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--
+
+        <ul>
+            <li>{{company}}</li>
+        </ul>
+
+        <ul>
+            <li><strong>Books:</strong> {{ num_books }}</li>
+            <li><strong>Copies:</strong> {{ num_instances }}</li>
+            <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+            <li><strong>Authors:</strong> {{ num_authors }}</li>
+        </ul>
+
+        -->
+
+        {% comment %}footer{% endcomment %}
+
+        <div class="container">
+            <p>Is this war too much for you, soldier?  Well, if you're thinking about going AWOL, then that's understandable.  
+               War is not for everybody.  Meanwhile, the United Banking Federation appreciates your service.  Click on the 
+               button below to delete your account.</p>
+            <div class="nav-item">
+                <a class="btn btn-warning">Drop out of the war</a>
+            </div>
+        </div>
+                
+        {% include 'footer.html' %}
+
+        <script src="{% static './js/chart.js' %}"></script>
+        
+    </body>
+
+</html>

@@ -1,0 +1,196 @@
+{% load static %}
+
+<DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <title>General Banks</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+
+        {% load django_bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        
+        <link rel="icon" type="image/x-icon" href="{% static './images/emblem.jpg' %}">
+
+        <link rel="stylesheet" href="{% static './css/template.css' %}">
+
+    </head>
+
+    <body class="login-background">
+
+        {% comment %} navbar {% endcomment %}
+
+        {% include 'navbar.html' %}
+
+        {% comment %} url paths {% endcomment %}
+
+        <div class="container">
+            <ul>
+                <li><a class="nav-link" href="{% url 'home' %}">Stay at the base (Home)</a></li>
+                <li><a class="nav-link" aria-disabled="true">Talk to command (Contact)</a></li>
+            </ul>
+        </div>
+
+        {% comment %} audio controls {% endcomment %}
+
+        <div class="container text-center">
+            <audio controls autoplay loop>
+                <source src="{% static './audio/mission-briefing-with-drums-instrumental-170033.mp3' %}" type="audio/mpeg">
+            </audio>
+        </div>
+
+        {% comment %} header {% endcomment %}
+
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-5">
+                    <img src="{% static './images/army_squad.jpg' %}" height="180" alt="registration squad">
+                </div>
+                <div class="col-2 my-auto">
+                    <h1 class="header">LOGIN</h1>
+                </div>
+                <div class="col-5">
+                    <img src="{% static './images/army_squad.jpg' %}" height="180" alt="registration squad">
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-center">
+            <h3 class="header">Mission Debriefing</h3>
+            <p>Below are your mission objectives, soldier.  You may choose to do them any way you wish, as long as you 
+                complete the mission.  Good luck out there on the battlefield.</p>
+            <table class="query-table">
+                <tr>
+                    <th>ID</th>
+                    <th>Company</th>
+                    <th>Description</th>
+                    <th>Established Date</th>
+                </tr>
+                {% for d in detail %}
+                    <tr>
+                        <td>{{d.id}}</td>
+                        <td>{{d.company}}</td>
+                        <td>{{d.description}}</td>
+                        <td>{{d.est_date}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        {% comment %} login form {% endcomment %}
+
+        <form class="container" action="{% url 'portfolio' %}">
+            {% csrf_token %}
+            <div class="form-group row">
+                <div class="col-6 offset-md-3">
+                    <label class="container-fluid p-0">
+                        Insert your codename, soldier
+                        <input type="text" class="form-control" placeholder="Username">                             
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-6 offset-md-3">
+                    <label class="container-fluid p-0">
+                        Insert your codeword, soldier
+                        <input type="password" class="form-control" placeholder="Password">                                              
+                    </label>    
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-warning login-btn">Join the battle</button>
+            </div>
+        </form>
+
+        {% if form.errors %}
+        <p>Your codename and codeword didn't match. Please try again, soldier.</p>
+            {% endif %}
+
+            {% if next %}
+                {% if user.is_authenticated %}
+                    <p>Your account doesn't have access to this page. To proceed,
+                    please login with an account that has access, soldier.</p>
+            {% else %}
+                <p>Please login to see this page, soldier.</p>
+            {% endif %}
+        {% endif %}
+
+        {% comment registration %} Scroll down here to register your username and password into our Command files {% endblock %}
+
+        <div class="container">
+            <p>Are you a new recruit, soldier?<a class="nav-link" aria-disabled='true'>Sign Up</a></p>
+            <p>Forgot your login information, soldier?<a class="nav-link" aria-disabled='true'>Reset Password</a></p>
+        </div>
+
+<!--
+        <table>
+      <tr>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+      </tr>
+      <tr>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
+      </tr>
+    </table>
+    <input type="submit" value="login">
+    <input type="hidden" name="next" value="{{ next }}">
+-->
+
+        <!--
+
+            {% extends "base_generic.html" %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+      </tr>
+      <tr>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
+      </tr>
+    </table>
+    <input type="submit" value="login">
+    <input type="hidden" name="next" value="{{ next }}">
+  </form>
+
+  {# Assumes you set up the password_reset view in your URLconf #}
+  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
+{% endblock %}
+        -->
+
+        {% comment %} footer {% endcomment %}
+        
+        {% include 'footer.html' %}
+
+    </body>
+
+</html>
