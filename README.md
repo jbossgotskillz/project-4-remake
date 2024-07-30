@@ -28,80 +28,17 @@ Minimal Requirements:  Python 3.8.10, Django 4.2.14, Chart.js 2.9.4
 
 Improvements: spend more time writing Python code, add login authentication, include event handling for the chart
 
-{% load static %}
-
-<DOCTYPE html>
-
 <html lang="en">
 
     <head>
-
-        <title>General Banks</title>
-
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
-
-        {% load django_bootstrap5 %}
-        {% bootstrap_css %}
-        {% bootstrap_javascript %}
-        
-        <link rel="icon" type="image/x-icon" href="{% static './images/emblem.jpg' %}">
-
-        <link rel="stylesheet" href="{% static './css/template.css' %}">
 
     </head>
 
     <body>
 
-        {% comment %} navbar {% endcomment %}
-
-        {% include 'navbar.html' %}
-
-        {% comment %} header {% endcomment %}
-
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-4">
-                    <img src="{% static './images/soldier.jpg' %}" height="180" alt="index squad">
-                </div>
-                <div class="col-4 my-auto">
-                    <h1 class="header">INDEX</h1>
-                </div>
-                <div class="col-4">
-                    <img src="{% static './images/soldier.jpg' %}" height="180" alt="index squad">
-                </div>
-            </div>        
-        </div>
-
-        {% comment %} url paths {% endcomment %}
-
         <div class="container">
-            <ul>
-                <li><a class="nav-link" href="{% url 'home' %}">Enter the Base (Home)</a></li>
-            </ul>
+                <a class="nav-link" name="index" href="./stock/templates/index.html">Click here to go to Index</a>
         </div>  
-
-        {% comment %} introduction {% endcomment %}
-
-        <div class="container">
-            <p>Hello there, soldier.  You seem to be ready for war.  Well, what are you waiting for?  Come right in and 
-                prepare to serve your stock market.  We need all the troops we can find.
-            </p>
-        </div>
-
-        {% comment %} footer {% endcomment %}
-
-        {% include 'footer.html' %}
-
-        <style>
-            body {
-                background-color:  skyblue;
-            }
-        </style>
 
     </body>
 
