@@ -8,9 +8,3 @@ urlpatterns = [
  	path('', include('stock.urls')),
 
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-
-
-# localhost:  http://127.0.0.1:5500/ (run server first)
-# Quit the server with CTRL-C
