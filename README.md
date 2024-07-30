@@ -35,7 +35,7 @@ Improvements: spend more time writing Python code, add login authentication, inc
 <body>
 
   <div>
-    <a class="nav-link" href="./index.html"</a>
+    <a class="nav-link" href="./index.html"></a>
   </div>
   
 </body>
