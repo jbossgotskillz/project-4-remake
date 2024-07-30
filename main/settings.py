@@ -1,9 +1,6 @@
 from pathlib import Path
-# from decouple import config
-
 import os
 
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent 
 
 SECRET_KEY = 'ts!r%h%hy-z(r37n1d!s(h0)1x=*w+9i$o)vzh%#c$k02#ttbg'
@@ -22,8 +19,6 @@ INSTALLED_APPS = [
     'bootstrap_themes',
     'django_bootstrap5',
     'stock.apps.StockConfig',
-#   'quandl',    
-    'matplotlib',
 ]
 
 MIDDLEWARE = [
@@ -33,7 +28,6 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptions.Middleware',
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -68,10 +62,6 @@ TIME_ZONE = 'America/Chicago'
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-#STATICFILES_DIRS = [
-#    BASE_DIR / 'main' / 'static',
-#]
 
 MEDIA_URL = '/media/'
 
