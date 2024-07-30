@@ -27,3 +27,15 @@ Technologies: html, css, js, py
 Minimal Requirements:  Python 3.8.10, Django 4.2.14, Chart.js 2.9.4
 
 Improvements: spend more time writing Python code, add login authentication, include event handling for the chart
+
+<head>
+  
+</head>
+
+<body>
+
+  <div>
+    <a class="nav-link" href="{% url 'index' %}">Finish your service (Index)</a>
+  </div>
+  
+</body>
