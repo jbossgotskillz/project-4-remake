@@ -28,19 +28,5 @@ Minimal Requirements:  Python 3.8.10, Django 4.2.14, Chart.js 2.9.4
 
 Improvements: spend more time writing Python code, add login authentication, include event handling for the chart
 
-<html lang="en">
-
-    <head>
-
-    </head>
-
-    <body>
-
-        <div class="container">
-                <a class="nav-link" name="index" href="./stock/templates/index.html">Click here to go to Index</a>
-        </div>  
-
-    </body>
-
-</html>
+https://general-banks-12b80dbf9c8b.herokuapp.com/
 
