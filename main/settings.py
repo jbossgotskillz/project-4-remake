@@ -16,7 +16,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap_themes',
     'django_bootstrap5',
     'stock.apps.StockConfig',
 ]
