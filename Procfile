@@ -1,1 +1,1 @@
-web: gunicorn project-4-remake.wsgi
+web: gunicorn main.wsgi
