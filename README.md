@@ -22,11 +22,15 @@ Nine pages make up the project in total. However, only five of them (Index, Home
 
 Most pages feature an audio control panel near the top that plays a unique music track. The music is set to play automatically and will loop when the track reaches the end, but you can pause or mute it if you don't want to listen to it.
 
-Technologies: html, css, js, py
+Technologies: html, css, js, py, txt
 
 Minimal Requirements:  Python 3.8.10, Django 4.2.14, Chart.js 2.9.4
 
 Improvements: spend more time writing Python code, add login authentication, include event handling for the chart
+
+
+
+*copy the link below to use the General Banks app*
 
 https://general-banks-12b80dbf9c8b.herokuapp.com/
 
